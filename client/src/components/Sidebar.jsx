@@ -80,13 +80,13 @@ const navItems = [
   
 
 const Sidebar = ({
-    DrawerWidth,
+    drawerWidth,
     isSidebarOpen,
     setIsSidebarOpen,
     isNonMobile,
 }) => {
   const { pathname } = useLocation();
-  const [active,setActive] = useState("");
+  const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -100,18 +100,18 @@ const Sidebar = ({
                 open={isSidebarOpen}
                 onClose={() => setIsSidebarOpen(false)}
                 variant="persistent"
-                anchor='left'
+                anchor="left"
                 sx={{
-                    width:DrawerWidth,
-                    "& .MuiDrawer-paper" : {
-                        color : theme.palette.secondary[200],
-                        backgroundColor : theme.palette.background.alt,
-                        boxSizing : "border-box",
-                        borderWidth : isNonMobile ? 0 : "2px",
-                        width : DrawerWidth
-                    }
+                    width: drawerWidth,
+                    "& .MuiDrawer-paper": {
+                    color: theme.palette.secondary[200],
+                    backgroundColor: theme.palette.background.alt,
+                    boxSizing: "border-box",
+                    borderWidth: isNonMobile ? 0 : "2px",
+                    width: drawerWidth,
+                    },
                 }}
-            >
+                >
                 <Box width="100%">
                     <Box margin="1.5rem 2rem 2rem 3rem">
                         <FlexBetween color={theme.palette.secondary.main}>
@@ -119,12 +119,12 @@ const Sidebar = ({
                                 <Typography variant="h4" fontWeight="bold">
                                     ECOMVISION
                                 </Typography> 
+                            </Box>
                                 {!isNonMobile && (
                                     <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                                        <ChevronLeft/> 
                                     </IconButton>
                                 )}
-                            </Box>
                         </FlexBetween>
                     </Box>
                     <List>
@@ -140,10 +140,26 @@ const Sidebar = ({
                             return (
                                 <ListItem key={text} disablePadding>
                                     <ListItemButton 
-                                        onClick={() => {navigate(`/${lcText}`);setActive(lcText); }} sx={{backgroundColor: active === lcText ? theme.palette.secondary[300] : "transparent", color: active === lcText ? theme.palette.primary[600] :theme.palette.secondary[100]}}>
+                                        onClick={() => {
+					navigate(`/${lcText}`);
+					setActive(lcText); 
+					}} 
+					sx={{
+					backgroundColor: 
+					active === lcText 
+					? theme.palette.secondary[300] 
+					: "transparent", 
+					color: 
+					active === lcText 
+					? theme.palette.primary[600] 
+					:theme.palette.secondary[100]
+					}}>
                                     <ListItemIcon sx={{
                                         ml: "2rem",
-                                        color: active === lcText ? theme.palette.primary[600] :theme.palette.secondary[200],
+                                        color: 
+					active === lcText 
+					? theme.palette.primary[600] 
+					:theme.palette.secondary[200],
                                     }}>
                                         {icon}
                                     </ListItemIcon>

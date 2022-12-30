@@ -7,22 +7,27 @@ import profileImage from "assets/profile.jpeg";
 import { useTheme } from '@emotion/react';
 import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material';
 
-const Navbar = ({
-    isSidebarOpen,
-    setIsSidebarOpen,
-}) => {
+const Navbar = ({ isSidebarOpen,setIsSidebarOpen}) => {
     const dispatch = useDispatch();
     const theme = useTheme();
 
   return (
-    <AppBar sx={{position: "static", background: "none", boxShadow: "none"}}>
+    <AppBar 
+    sx={{
+    position: "static", 
+    background: "none", 
+    boxShadow: "none",}}>
         <Toolbar sx={{justifyContent: "space-between"}}>
             {/* LEFT SIDE */}
             <FlexBetween>
                 <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <MenuIcon/>
                 </IconButton>
-                <FlexBetween backgroundColor={theme.palette.background.alt} borderRadius="9px" gap="3rem" p="0.1rem 1.5rem">
+                <FlexBetween 
+		backgroundColor={theme.palette.background.alt} 
+		borderRadius="9px" 
+		gap="3rem" 
+		p="0.1rem 1.5rem">
                 <InputBase placeholder='Search...'/>
                 <IconButton>
                     <Search/>
@@ -39,7 +44,7 @@ const Navbar = ({
                     )}
                 </IconButton>
                 <IconButton>
-                    <SettingsOutlined x={{fontSize:"25px"}}/>
+                    <SettingsOutlined sx={{fontSize:"25px"}}/>
                 </IconButton>
             </FlexBetween>
         </Toolbar>
